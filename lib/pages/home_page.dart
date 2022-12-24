@@ -127,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                         _currentIndex = index;
                       });
                     },
-                    itemCount: words.length,
+                    itemCount: words.length > 5 ? 6 : words.length,
                     itemBuilder: (context, index) {
                       String firstLetter =
                           words[index].noun != null ? words[index].noun! : '';
@@ -161,62 +161,91 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadius.all(Radius.circular(24)),
                             child: Container(
                               padding: const EdgeInsets.all(16),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                      alignment: Alignment.centerRight,
-                                      child: Image.asset(
-                                        AppAssets.heart,
-                                        color: words[index].isFavorite
-                                            ? Colors.red
-                                            : Colors.white,
-                                      )),
-                                  RichText(
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.start,
-                                      text: TextSpan(
-                                          text: firstLetter,
-                                          style: TextStyle(
-                                              fontFamily: FontFamily.sen,
-                                              fontSize: 89,
-                                              fontWeight: FontWeight.bold,
+                              child: index >= 5
+                                  ? InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) =>
+                                                  AllWordsPage(words: words)),
+                                        );
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          "Show more...",
+                                          style: AppStyles.h3.copyWith(
                                               shadows: [
                                                 BoxShadow(
-                                                  color: Colors.black38,
-                                                  offset: Offset(3, 6),
-                                                  blurRadius: 6,
-                                                )
+                                                    color: Colors.black26,
+                                                    offset: Offset(3, 6),
+                                                    blurRadius: 6)
                                               ]),
-                                          children: [
-                                            TextSpan(
-                                              text: leftLetter,
-                                              style: TextStyle(
-                                                  fontFamily: FontFamily.sen,
-                                                  fontSize: 56,
-                                                  fontWeight: FontWeight.bold,
-                                                  shadows: [
-                                                    BoxShadow(
-                                                      color: Colors.black38,
-                                                      offset: Offset(3, 6),
-                                                      blurRadius: 6,
-                                                    )
-                                                  ]),
-                                            )
-                                          ])),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 24),
-                                    child: AutoSizeText(
-                                      '"$quote"',
-                                      maxFontSize: 26,
-                                      style: AppStyles.h4.copyWith(
-                                          letterSpacing: 1,
-                                          color: AppColors.textColor),
+                                        ),
+                                      ),
+                                    )
+                                  : Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                            alignment: Alignment.centerRight,
+                                            child: Image.asset(
+                                              AppAssets.heart,
+                                              color: words[index].isFavorite
+                                                  ? Colors.red
+                                                  : Colors.white,
+                                            )),
+                                        RichText(
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.start,
+                                            text: TextSpan(
+                                                text: firstLetter,
+                                                style: TextStyle(
+                                                    fontFamily: FontFamily.sen,
+                                                    fontSize: 89,
+                                                    fontWeight: FontWeight.bold,
+                                                    shadows: [
+                                                      BoxShadow(
+                                                        color: Colors.black38,
+                                                        offset: Offset(3, 6),
+                                                        blurRadius: 6,
+                                                      )
+                                                    ]),
+                                                children: [
+                                                  TextSpan(
+                                                    text: leftLetter,
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            FontFamily.sen,
+                                                        fontSize: 56,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        shadows: [
+                                                          BoxShadow(
+                                                            color:
+                                                                Colors.black38,
+                                                            offset:
+                                                                Offset(3, 6),
+                                                            blurRadius: 6,
+                                                          )
+                                                        ]),
+                                                  )
+                                                ])),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 24),
+                                          child: AutoSizeText(
+                                            '"$quote"',
+                                            maxFontSize: 26,
+                                            style: AppStyles.h4.copyWith(
+                                                letterSpacing: 1,
+                                                color: AppColors.textColor),
+                                          ),
+                                        )
+                                      ],
                                     ),
-                                  )
-                                ],
-                              ),
                             ),
                           ),
                         ),
@@ -224,26 +253,23 @@ class _HomePageState extends State<HomePage> {
                     })),
 
             // indicator
-            _currentIndex >= 5
-                ? buildShowMore()
-                : Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: SizedBox(
-                      height: size.height * 1 / 11,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 24),
-                        alignment: Alignment.center,
-                        child: ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 5,
-                            itemBuilder: (context, index) {
-                              return buildIndicator(
-                                  index == _currentIndex, size);
-                            }),
-                      ),
-                    ),
-                  )
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: SizedBox(
+                height: size.height * 1 / 11,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 24),
+                  alignment: Alignment.center,
+                  child: ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 5,
+                      itemBuilder: (context, index) {
+                        return buildIndicator(index == _currentIndex, size);
+                      }),
+                ),
+              ),
+            )
           ],
         ),
       ),
@@ -307,35 +333,6 @@ class _HomePageState extends State<HomePage> {
             BoxShadow(
                 color: Colors.black38, offset: Offset(2, 3), blurRadius: 3)
           ]),
-    );
-  }
-
-  Widget buildShowMore() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      alignment: Alignment.centerLeft,
-      child: Material(
-        borderRadius: BorderRadius.all(Radius.circular(24)),
-        elevation: 4,
-        color: AppColors.primaryColor,
-        child: InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (_) => AllWordsPage(words: this.words)),
-            );
-          },
-          splashColor: Colors.black38,
-          borderRadius: BorderRadius.all(Radius.circular(24)),
-          child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-              child: Text(
-                "Show more",
-                style: AppStyles.h5,
-              )),
-        ),
-      ),
     );
   }
 }
