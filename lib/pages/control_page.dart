@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_app_2021/values/app_assets.dart';
 import 'package:flutter_app_2021/values/app_colors.dart';
 import 'package:flutter_app_2021/values/app_styles.dart';
@@ -57,11 +55,11 @@ class _ControlPageState extends State<ControlPage> {
         width: double.infinity,
         child: Column(
           children: [
-            Spacer(),
+            const Spacer(),
             Text("How much a number word at once",
                 style: AppStyles.h4
                     .copyWith(color: AppColors.lighGrey, fontSize: 18)),
-            Spacer(),
+            const Spacer(),
             Text('${sliderValue.toInt()}',
                 style: AppStyles.h1.copyWith(
                     color: AppColors.primaryColor,
@@ -86,9 +84,9 @@ class _ControlPageState extends State<ControlPage> {
               child: Text("slide to set",
                   style: AppStyles.h5.copyWith(color: AppColors.textColor)),
             ),
-            Spacer(),
-            Spacer(),
-            Spacer(),
+            const Spacer(),
+            const Spacer(),
+            const Spacer(),
           ],
         ),
       ),

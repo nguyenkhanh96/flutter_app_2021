@@ -36,7 +36,7 @@ class AllWordsPage extends StatelessWidget {
                     color: (index % 2 == 0)
                         ? AppColors.primaryColor
                         : AppColors.secondColor,
-                    borderRadius: BorderRadius.all(Radius.circular(8))),
+                    borderRadius: const BorderRadius.all(Radius.circular(8))),
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(16),
                   title: Text(
