@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/**
- * Style of Text, Button...
- */
+/// Style of Text, Button...
 
 class FontFamily {
   static final sen = 'Sen';

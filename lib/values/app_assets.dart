@@ -1,6 +1,4 @@
-/**
- * Define path of assets (image)
- */
+/// Define path of assets (image)
 
 class AppAssets {
   static final String imagePath = 'assets/images/';

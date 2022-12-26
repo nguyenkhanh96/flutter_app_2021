@@ -148,7 +148,8 @@ class _HomePageState extends State<HomePage> {
                       return Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Material(
-                          borderRadius: BorderRadius.all(Radius.circular(24)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(24)),
                           color: AppColors.primaryColor,
                           elevation: 4,
                           child: InkWell(
@@ -159,7 +160,8 @@ class _HomePageState extends State<HomePage> {
                               });
                             },
                             splashColor: Colors.transparent,
-                            borderRadius: BorderRadius.all(Radius.circular(24)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(24)),
                             child: Container(
                               padding: const EdgeInsets.all(16),
                               child: index >= 5
@@ -177,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                                           "Show more...",
                                           style: AppStyles.h3.copyWith(
                                               shadows: [
-                                                BoxShadow(
+                                                const BoxShadow(
                                                     color: Colors.black26,
                                                     offset: Offset(3, 6),
                                                     blurRadius: 6)
@@ -201,10 +203,10 @@ class _HomePageState extends State<HomePage> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.end,
                                           size: 42,
-                                          circleColor: CircleColor(
+                                          circleColor: const CircleColor(
                                               start: Color(0xff00ddff),
                                               end: Color(0xff0099cc)),
-                                          bubblesColor: BubblesColor(
+                                          bubblesColor: const BubblesColor(
                                             dotPrimaryColor: Color(0xff33b5e5),
                                             dotSecondaryColor:
                                                 Color(0xff0099cc),
@@ -244,7 +246,7 @@ class _HomePageState extends State<HomePage> {
                                                     fontFamily: FontFamily.sen,
                                                     fontSize: 89,
                                                     fontWeight: FontWeight.bold,
-                                                    shadows: [
+                                                    shadows: const [
                                                       BoxShadow(
                                                         color: Colors.black38,
                                                         offset: Offset(3, 6),
@@ -260,7 +262,7 @@ class _HomePageState extends State<HomePage> {
                                                         fontSize: 56,
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        shadows: [
+                                                        shadows: const [
                                                           BoxShadow(
                                                             color:
                                                                 Colors.black38,
@@ -299,7 +301,7 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.symmetric(vertical: 24),
                   alignment: Alignment.center,
                   child: ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       itemCount: 5,
                       itemBuilder: (context, index) {
@@ -335,19 +337,17 @@ class _HomePageState extends State<HomePage> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 24),
-                child: AppButton(
-                    label: "Favorites",
-                    onTap: () {
-                      print("favorite");
-                    }),
+                child: AppButton(label: "Favorites", onTap: () {}),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 24),
                 child: AppButton(
                     label: "Your control",
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => ControlPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const ControlPage()));
                     }),
               )
             ],
@@ -359,15 +359,15 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildIndicator(bool isActive, Size size) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.bounceInOut,
       height: 8,
       margin: const EdgeInsets.symmetric(horizontal: 12),
       width: isActive ? size.width * 1 / 5 : 24,
       decoration: BoxDecoration(
           color: isActive ? AppColors.lighBlue : AppColors.lighGrey,
-          borderRadius: BorderRadius.all(Radius.circular(12)),
-          boxShadow: [
+          borderRadius: const BorderRadius.all(Radius.circular(12)),
+          boxShadow: const [
             BoxShadow(
                 color: Colors.black38, offset: Offset(2, 3), blurRadius: 3)
           ]),
