@@ -56,9 +56,9 @@ class _HomePageState extends State<HomePage> {
     int len = prefs.getInt(ShareKeys.counter) ?? 5;
     List<String> newList = [];
     List<int> rans = fixedListRandom(len: len, max: nouns.length);
-    rans.forEach((index) {
+    for (var index in rans) {
       newList.add(nouns[index]);
-    });
+    }
 
     setState(() {
       words = newList.map((e) => getQuote(e)).toList();
@@ -105,7 +105,7 @@ class _HomePageState extends State<HomePage> {
           child: Image.asset(AppAssets.menu),
         ),
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Column(
           children: [
@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                     .copyWith(fontSize: 12, color: AppColors.textColor),
               ),
             ),
-            Container(
+            SizedBox(
                 height: size.height * 2 / 3,
                 child: PageView.builder(
                     controller: _pageController,
@@ -220,7 +220,7 @@ class _HomePageState extends State<HomePage> {
                                             //   size: 42,
                                             // );
                                             return ImageIcon(
-                                              AssetImage(AppAssets.heart),
+                                              const AssetImage(AppAssets.heart),
                                               color: isLiked
                                                   ? Colors.red
                                                   : Colors.white,
@@ -242,11 +242,11 @@ class _HomePageState extends State<HomePage> {
                                             textAlign: TextAlign.start,
                                             text: TextSpan(
                                                 text: firstLetter,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontFamily: FontFamily.sen,
                                                     fontSize: 89,
                                                     fontWeight: FontWeight.bold,
-                                                    shadows: const [
+                                                    shadows: [
                                                       BoxShadow(
                                                         color: Colors.black38,
                                                         offset: Offset(3, 6),
@@ -256,13 +256,13 @@ class _HomePageState extends State<HomePage> {
                                                 children: [
                                                   TextSpan(
                                                     text: leftLetter,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         fontFamily:
                                                             FontFamily.sen,
                                                         fontSize: 56,
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        shadows: const [
+                                                        shadows: [
                                                           BoxShadow(
                                                             color:
                                                                 Colors.black38,

@@ -4,7 +4,7 @@ import 'quote_model.dart';
 import 'quotes.dart';
 
 class Quotes {
-  static Quotes _instance = Quotes._internal();
+  static final Quotes _instance = Quotes._internal();
   static List<Quote> datas = [];
   Quotes._internal();
 
@@ -28,7 +28,7 @@ class Quotes {
   }
 
   int _getRandomIndex() {
-    return new Random.secure().nextInt(allquotes.length);
+    return Random.secure().nextInt(allquotes.length);
   }
 
   // //Returns first quote

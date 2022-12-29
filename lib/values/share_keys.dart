@@ -1,3 +1,3 @@
 class ShareKeys {
-  static final counter = 'counter';
+  static const counter = 'counter';
 }
